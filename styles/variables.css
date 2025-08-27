@@ -1,1 +1,23 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+  /*typography*/
+
+  --main-font: 'Inter-Variable';
+  --main-font-weight-text: 410;
+  --main-font-weight-title: 715;
+  --accent-font: 'PressStart2P-Regular';
+
+  /*color*/
+
+  --bg-color: #fff;
+  --label-text-stroke: #fff;
+  --text-color: #fff;
+  --like-icon-contour: #000;
+  --animation-fill-color: #f00;
+  --accent-color: #000;
+
+  /*sizes*/
+  --block-width: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
+  --dialog-block-width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+}
