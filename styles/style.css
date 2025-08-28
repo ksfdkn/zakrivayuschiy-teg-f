@@ -39,7 +39,7 @@
   padding: clamp(7.5rem, 7.2799rem + 0.939vw, 8.125rem)
     clamp(1rem, -1.3438rem + 10vw, 7.65625rem);
   font-family:
-    var(--accent-font, 'PressStart2P-Regular'), Arial, Helvetica, sans-serif;
+    var(--accent-font, 'PressStart2P'), fantasy, sans-serif;
   font-weight: 400;
   background-color: var(--bg-color, #fff);
 }
@@ -149,7 +149,7 @@
   opacity: 0.5;
   color: currentColor;
   font-family:
-    var(--accent-font, 'PressStart2P-Regular'), Arial, Helvetica, sans-serif;
+    var(--accent-font, 'PressStart2P'), fantasy, sans-serif;
   font-weight: 400;
   font-size: 14px;
   text-transform: uppercase;
@@ -171,6 +171,10 @@
   border-block-start: 2px solid var(--accent-color, #000);
   padding-inline: 25px;
   padding-block: 25px;
+}
+
+.article__text {
+  line-height: 21px;
 }
 
 .article__button-wrapper {
@@ -195,20 +199,53 @@
   max-block-size: 38px;
 }
 
+.card__icon-button:focus-visible {
+  border-color: currentColor;
+}
+
 .like-icon {
   inline-size: 100%;
   block-size: 100%;
 }
 
-.card__like-button {
+.button {
   position: relative;
   border-inline: 2px solid var(--accent-color, #000);
   border-block: 2px solid var(--accent-color, #000);
-  padding-inline: 21px;
-  padding-block: 6.5px;
   background-color: var(--bg-color, #fff);
   transition: box-shadow 0.3s ease;
   cursor: pointer;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  background-color: currentColor;
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+  inline-size: 100%;
+  block-size: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+button:hover::before {
+  transform: scaleX(1);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 currentColor;
+}
+
+.card__like-button {
+  padding-inline: 21px;
+  padding-block: 6.5px;
   inline-size: 130px;
 }
 
@@ -217,7 +254,7 @@
   z-index: 2;
   color: var(--text-color, #fff);
   font-family:
-    var(--accent-font, 'PressStart2P-Regular'), Arial, Helvetica, sans-serif;
+    var(--accent-font, 'PressStart2P'), fantasy, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 13px;
@@ -225,18 +262,12 @@
 }
 
 .button-save {
-  position: relative;
   display: flex;
   flex-direction: column;
   place-items: center;
   gap: 8px;
-  border-inline: 2px solid var(--accent-color, #000);
-  border-block: 2px solid var(--accent-color, #000);
   padding-inline: 18px;
   padding-block: 16px;
-  background-color: var(--bg-color, #fff);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
 }
 
 .button-save__icon {
@@ -252,8 +283,6 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  /*хотела красиво inline-size использовать, а пришлось 
-  перебивать стили*/
   max-width: var(
     --dialog-block-width,
     clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem)
@@ -293,65 +322,18 @@ body:has(.dialog-save[open]) {
 
 .dialog-save__text {
   font-family:
-    var(--accent-font, 'PressStart2P-Regular'), Arial, Helvetica, sans-serif;
+    var(--accent-font, 'PressStart2P'), fantasy, sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
 }
 
 .dialog-save__button {
-  position: relative;
-  border-inline: 2px solid var(--accent-color, #000);
-  border-block: 2px solid var(--accent-color, #000);
   padding-block: 5.5px;
-  background-color: var(--bg-color, #fff);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
 }
 
 .dialog-save__button-text {
   text-transform: uppercase;
-}
-
-.card__like-button::before,
-.button-save::before,
-.dialog-save__button::before {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  background-color: currentColor;
-  transition: transform 0.5s ease-in-out;
-  transform: scaleX(0);
-  transform-origin: left;
-  inline-size: 100%;
-  block-size: 100%;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-}
-
-.card__like-button:hover::before,
-.button-save:hover::before,
-.dialog-save__button:hover::before {
-  transform: scaleX(1);
-}
-
-.card__like-button:focus,
-.button-save:focus,
-.dialog-save__button:focus,
-.card__icon-button:focus {
-  outline: none;
-}
-
-.card__like-button:focus-visible,
-.button-save:focus-visible,
-.dialog-save__button:focus-visible {
-  box-shadow: 2px 2px 0 currentColor;
-  transition: box-shadow 0.3s ease;
-}
-
-.card__icon-button:focus-visible {
-  border-color: currentColor;
-  transition: border-color 0.3s ease;
 }
 
 @media (width > 375px) {
