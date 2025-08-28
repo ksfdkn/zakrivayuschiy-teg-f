@@ -231,7 +231,7 @@
   inset-inline-start: 0;
 }
 
-button:hover::before {
+.button:hover::before {
   transform: scaleX(1);
 }
 
