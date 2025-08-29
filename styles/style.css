@@ -199,6 +199,12 @@
   max-block-size: 38px;
 }
 
+/*мимо прошло, что рамка с закруглением(*/
+
+.card__icon-button:focus {
+  outline: none;
+}
+
 .card__icon-button:focus-visible {
   border-color: currentColor;
 }
